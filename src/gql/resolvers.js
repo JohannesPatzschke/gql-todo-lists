@@ -6,7 +6,10 @@ const resolvers = {
     id: ({ _id }) => _id
   },
   List: {
-    id: ({ _id }) => _id
+    id: ({ _id }) => _id,
+    todos: async ({ _id }) => {
+      return Todo.find({ list: _id }).lean()
+    }
   },
   Query: {
     lists: async () => {
